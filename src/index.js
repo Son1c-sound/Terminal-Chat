@@ -8,11 +8,7 @@ import { parseEmojis } from './emojis.js';
 
 const program = new Command();
 
-console.log(
-  gradient.pastel.multiline(
-    figlet.textSync('Limbo', { font: 'Standard', horizontalLayout: 'full' })
-  )
-);
+console.log(gradient.pastel.multiline(figlet.textSync('Limbo', { font: 'Standard', horizontalLayout: 'full' })))
 
 program
   .version('1.0.0')

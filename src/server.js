@@ -17,16 +17,16 @@ const usernameMap = new Map();
 
 io.on('connection', (socket) => {
   console.log(chalk.green(`Client connected: ${socket.id}`));
-  
+
   socket.on('send-message', (message) => {
     if (!message || !message.content) {
       return;
     }
-    
+
     if (message.username && !users.has(socket.id)) {
       const username = message.username.trim();
       const lowerUsername = username.toLowerCase();
-      
+
       if (usernameMap.has(lowerUsername)) {
         const existingSocketId = usernameMap.get(lowerUsername);
         if (existingSocketId !== socket.id && io.sockets.sockets.has(existingSocketId)) {
@@ -36,33 +36,33 @@ io.on('connection', (socket) => {
             content: `Error: Username "${username}" is already in use. Please choose another username.`,
             timestamp: new Date().toISOString()
           });
-          
-          setTimeout(() => {
-            socket.disconnect(true);
-          }, 1000);
-          
+
+          setTimeout(() => {socket.disconnect(true)}, 1000);
+
           return;
         }
       }
-      
+
       users.set(socket.id, username);
       usernameMap.set(lowerUsername, socket.id);
-      
+
       console.log(chalk.blue(`User registered: ${username} (${socket.id})`));
-      
+
       io.emit('receive-message', {
         id: Date.now(),
         username: 'System',
         content: `${username} has joined the chat`,
         timestamp: new Date().toISOString()
       });
+
+      return;
     }
-    
+
     const verifiedUsername = users.get(socket.id);
-    
+
     if (verifiedUsername) {
       console.log(chalk.yellow(`Message from ${verifiedUsername}: ${message.content}`));
-      
+
       io.emit('receive-message', {
         id: Date.now(),
         username: verifiedUsername,
@@ -71,19 +71,19 @@ io.on('connection', (socket) => {
       });
     }
   });
-  
+
   socket.on('disconnect', () => {
     const username = users.get(socket.id);
     if (username) {
       console.log(chalk.red(`User disconnected: ${username} (${socket.id})`));
-      
+
       io.emit('receive-message', {
         id: Date.now(),
         username: 'System',
         content: `${username} has left the chat`,
         timestamp: new Date().toISOString()
       });
-      
+
       usernameMap.delete(username.toLowerCase());
       users.delete(socket.id);
     } else {
