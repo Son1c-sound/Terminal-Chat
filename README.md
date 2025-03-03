@@ -8,4 +8,3 @@ not in production, so you will have to build it urself
 
 ![Limbo Chat Demo](https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExdTd0eWw3aWR1MjEzN2hlNjJtZHBtOHRvNWp4OGk2eWg5cmtsbnRjaSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/XsEa3qZzeWzHpQPAcY/giphy.gif)
 
-some future features may include: jwt auth, database, channels, private chat.
