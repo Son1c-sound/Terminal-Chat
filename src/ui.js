@@ -1,18 +1,15 @@
 import blessed from 'neo-blessed';
 
 export function createInterface() {
-  // Create a screen object
   const screen = blessed.screen({
     smartCSR: true,
     title: 'Limbo',
     dockBorders: true,
     fullUnicode: true,
-    // Add these for better focus handling
     useBCE: true,
     sendFocus: true
   });
 
-  // Create a message list box
   const messageList = blessed.box({
     top: 0,
     left: 0,
@@ -39,11 +36,9 @@ export function createInterface() {
     },
     tags: true,
     content: '{center}{bold}Welcome to Limbo!{/bold}{/center}\n{center}Start typing to send a message{/center}',
-    // Add mouse support for scrolling
     mouse: true
   });
 
-  // Create an input bar
   const inputBar = blessed.textbox({
     bottom: 1,
     left: 0,
@@ -63,7 +58,6 @@ export function createInterface() {
         }
       }
     },
-    // Improve input handling reliability
     clickable: true,
     keyable: true,
     keys: true,
@@ -75,7 +69,6 @@ export function createInterface() {
     }
   });
 
-  // Create a status bar
   const statusBar = blessed.box({
     bottom: 0,
     left: 0,
@@ -89,12 +82,9 @@ export function createInterface() {
     tags: true
   });
 
-  // Append our boxes to the screen
   screen.append(messageList);
   screen.append(inputBar);
   screen.append(statusBar);
-
-  // Render the screen
   screen.render();
 
   return {
