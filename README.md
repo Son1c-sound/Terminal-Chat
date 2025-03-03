@@ -6,5 +6,5 @@ not in production, so you will have to build it urself
 - node server.js
 - npm run chat yourname
 
-![Limbo Chat Demo](https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExdTd0eWw3aWR1MjEzN2hlNjJtZHBtOHRvNWp4OGk2eWg5cmtsbnRjaSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/XsEa3qZzeWzHpQPAcY/giphy.gif)
+![Limbo Chat Demo](https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExZXMybzA3b3dud3F0bXVpYXoxeWlkd2Nrc21tMHQydmk0eG9ia2p6eCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/FL59LN8fHkfelNlVq3/giphy.gif)
 
